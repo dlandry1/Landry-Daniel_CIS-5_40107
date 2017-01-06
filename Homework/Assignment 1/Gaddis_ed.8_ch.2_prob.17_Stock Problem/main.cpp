@@ -1,7 +1,7 @@
 /* 
   File:   main.cpp
-  Author: Dr. Mark E. Lehr
-  Created on January 3, 2017, 12:15 PM
+  Author: Daniel Landry
+  Created on January 5, 2017, 9:34 PM
   Purpose:  Template to be used in all programming
             projects!
  */
@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     //Output values
     cout<<"Stock Price/Share = $"<<static_cast<int>(stkprce)<<"/shares"<<endl;
     cout<<"Number of Shares = "<<nShares<<"/shares"<<endl;
-    cout<<"Commission"<<static_cast<int>(comishn)<<"/shares"<<endl;
+    cout<<"Commission = "<<static_cast<int>(comishn)<<"%"<<endl;
     cout<<"Stock Price Payed = $"<<stkPaid<<endl;
     cout<<"Commission Paid = $"<<comPaid<<endl;
     cout<<"Total Paid = $"<<totPaid<<endl;
