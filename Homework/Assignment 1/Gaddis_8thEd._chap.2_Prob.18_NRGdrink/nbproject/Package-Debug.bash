@@ -7,15 +7,15 @@
 # Macros
 TOP=`pwd`
 CND_PLATFORM=Cygwin-Windows
-CND_CONF=Release
+CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gaddis_8thed._chap2_prob.17_stock_v2
-OUTPUT_BASENAME=gaddis_8thed._chap2_prob.17_stock_v2
-PACKAGE_TOP_DIR=gaddis8thed.chap2prob.17stockv2/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gaddis_8thed._chap.2_prob.18_nrgdrink
+OUTPUT_BASENAME=gaddis_8thed._chap.2_prob.18_nrgdrink
+PACKAGE_TOP_DIR=gaddis8thed.chap.2prob.18nrgdrink/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/gaddis8thed.chap2prob.17stockv2/bin"
+makeDirectory "${NBTMPDIR}/gaddis8thed.chap.2prob.18nrgdrink/bin"
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/gaddis8thed.chap2prob.17stockv2.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/gaddis8thed.chap.2prob.18nrgdrink.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/gaddis8thed.chap2prob.17stockv2.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/gaddis8thed.chap.2prob.18nrgdrink.tar *
 checkReturnCode
 
 # Cleanup
