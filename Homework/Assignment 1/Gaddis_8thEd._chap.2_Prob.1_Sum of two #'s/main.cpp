@@ -2,8 +2,9 @@
   File:   main.cpp
   Author: Daniel Landry
   Created on January 4, 2017, 10:00 PM
-  Purpose:  Write a program that stores the sum of the numbers that
- *          are stored as variables. */
+  Purpose:  Write a program that calculates the sum of two numbers stored
+ *          as variables.
+ */
 
 //System Libraries
 #include <iostream>
@@ -21,9 +22,9 @@ using namespace std;
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables
-    char numb1=50;
-    char numb2=100;
-    float total;
+    char numb1=50,
+    numb2=100;
+    short total;
     //Input values
     
     //Process by mapping inputs to outputs

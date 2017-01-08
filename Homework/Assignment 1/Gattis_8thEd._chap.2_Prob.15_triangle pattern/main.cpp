@@ -2,7 +2,7 @@
   File:   main.cpp
   Author: Daniel Landry
   Created on January 4, 2017, 12:15 PM
-  Purpose:  Producing a triangle
+  Purpose:  Program that will produce a triangle.
  */
 
 //System Libraries

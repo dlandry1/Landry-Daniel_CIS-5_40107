@@ -16,7 +16,7 @@ using namespace std;
 //Such as PI, Vc, -> Math/Science values
 //as well as conversions from system of units to 
 //another
-const unsigned char PERCENT=100;
+const unsigned char PERCENT=100; //conversion of percent
 //Function Prototypes
 
 //Executable code begins here!!!
@@ -37,10 +37,12 @@ int main(int argc, char** argv){
           
     
     //Output values
+    cout<<"This program will calculate the meal cost, tax amount, tip amount\n";
+    cout<<"and total bill."<<endl;
     cout<<"The meal cost = $"<<meal<<endl;
     cout<<"Tax amount = $"<<tax<<endl;
     cout<<"Tip amount = $"<<tip<<endl;
-    cout<<"The Total Bill = $"<<totExps<<endl;
+    cout<<"The total bill = $"<<totExps<<endl;
     //Exit stage right!
     return 0;
  }

@@ -2,8 +2,9 @@
   File:   main.cpp
   Author: Daniel Landry
   Created on January 6, 2017, 8:35 AM
-  Purpose:  Template to be used in all programming
-            projects!
+  Purpose:  This program is used to display the cost of each item, calculate
+           the sub total, find the tax owed, the tip to be payed, and the 
+           overall total.
  */
 
 //System Libraries
@@ -33,10 +34,10 @@ int main(int argc, char** argv) {
     //Input values
     
     //Process by mapping inputs to outputs
-    tot = item1+item2+item3+item4+item5;
-    tax=tot * taxrt;
-    grndtot= tot + tax;
-    prctax=taxrt*100;
+    tot = item1+item2+item3+item4+item5;  //subtotal of all items
+    tax=tot * taxrt;  //the tax owed
+    grndtot= tot + tax;  //the total with tax included
+    prctax=taxrt*100;  //conversion of tax rate to a percent
     
     //Output values
     cout<<"The sales price of each of your items will be displayeed below: \n";

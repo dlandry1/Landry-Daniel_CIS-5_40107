@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=experimentation
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/experimentation
+CND_ARTIFACT_NAME_Debug=savitch_8thed_chap1_prob9_freefall_workds_
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/savitch_8thed_chap1_prob9_freefall_workds_
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=experimentation.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/experimentation.tar
+CND_PACKAGE_NAME_Debug=savitch8thedchap1prob9freefall(workds).tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/savitch8thedchap1prob9freefall(workds).tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=experimentation
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/experimentation
+CND_ARTIFACT_NAME_Release=savitch_8thed_chap1_prob9_freefall_workds_
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/savitch_8thed_chap1_prob9_freefall_workds_
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=experimentation.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/experimentation.tar
+CND_PACKAGE_NAME_Release=savitch8thedchap1prob9freefall(workds).tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/savitch8thedchap1prob9freefall(workds).tar
 #
 # include compiler specific variables
 #

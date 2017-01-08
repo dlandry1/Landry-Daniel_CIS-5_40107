@@ -1,9 +1,10 @@
 /* 
   File:   main.cpp
-  Author: Dr. Mark E. Lehr
-  Created on January 3, 2017, 12:15 PM
-  Purpose:  Template to be used in all programming
-            projects!
+  Author: Daniel Landry
+  Created on January 5, 2017, 12:15 PM
+  Purpose:  Program that will calculate the distance fallen after x amount of
+ *          seconds.
+ 
  */
 
 //System Libraries
@@ -18,14 +19,14 @@ using namespace std;
 //as well as conversions from system of units to 
 //another
 //Function Prototypes
-const float GRAVITY= 3.2174e1f;
+const float GRAVITY= 3.2174e1f;  //the force of gravity
 
 //Executable code begins here!!!
  int main(int argc, char** argv) {
     //Declare Variables
         float time,       //time in sec
-            distnce;//in ft
-        int rndoff;
+            distnce;      //in ft
+        int rndoff;      //the number of decimals you want to round to
     //Input values
     cout<<"This problem solves the distance traveled"<<endl;
     cout<<"in free-fall under earth gravity"<<endl;
@@ -34,9 +35,10 @@ const float GRAVITY= 3.2174e1f;
     cout<<"How many decimal places 0,1,2 or 3 for the answer"<<endl;
     cin>>rndoff;
     //Process by mapping inputs to outputs
-    distnce=GRAVITY*time*time/2;
-    int id=distnce*pow(10,rndoff)+0.5; //round to 2 decimal
-    distnce=id/pow(10,rndoff);
+    distnce=GRAVITY*time*time/2;  //formula for gravity
+    int id=distnce*pow(10,rndoff)+0.5; //adds 10^(#), forms large whole#
+                                       //+ 0.5 to round up
+    distnce=id/pow(10,rndoff);  //removes 10^(#)power function, makes decimal
     //Output values
     cout<<"The distance fallen = "<<distnce<<"ft"<<endl;
     //Exit stage right!
