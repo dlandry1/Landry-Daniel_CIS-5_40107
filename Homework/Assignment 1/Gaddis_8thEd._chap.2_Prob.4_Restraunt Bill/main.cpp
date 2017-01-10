@@ -8,6 +8,7 @@
 
 //System Libraries
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -39,6 +40,7 @@ int main(int argc, char** argv){
     //Output values
     cout<<"This program will calculate the meal cost, tax amount, tip amount\n";
     cout<<"and total bill."<<endl;
+    cout<<setprecision(2)<<fixed;
     cout<<"The meal cost = $"<<meal<<endl;
     cout<<"Tax amount = $"<<tax<<endl;
     cout<<"Tip amount = $"<<tip<<endl;

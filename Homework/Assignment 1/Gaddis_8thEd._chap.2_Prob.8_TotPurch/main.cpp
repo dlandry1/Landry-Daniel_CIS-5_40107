@@ -10,6 +10,7 @@
 //System Libraries
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -41,6 +42,7 @@ int main(int argc, char** argv) {
     
     //Output values
     cout<<"The sales price of each of your items will be displayeed below: \n";
+    cout<<setprecision(2)<<fixed;
     cout<<"Item 1 = $"<<item1<<endl;
     cout<<"Item 2 = $"<<item2<<endl;
     cout<<"Item 3 = $"<<item3<<endl;
