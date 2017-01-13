@@ -1,8 +1,8 @@
 /* 
  * File:   main.cpp
- * Author: Dr. Mark E. Lehr
- * Created on July 19, 2016, 9:07 AM
- * Purpose:  Hello World Template
+ * Author: Daniel Landry
+ * Created on Jan 12, 2016, 9:07 PM
+ * Purpose:  This program will produce the average of 5 test scores
  */
 
 //System Libraries Here
@@ -35,8 +35,8 @@ int main(int argc, char** argv) {
     cout<<"Test 5 = ";
     cin>>Test5;
     //Process/Calculations Here
-    sum=Test1+Test2+Test3+Test4+Test5;
-    avg=sum/5;
+    sum= Test1+Test2+Test3+Test4+Test5;
+    avg= sum/5;
             
     //Output Located Here
     cout<<setprecision(1)<<fixed;

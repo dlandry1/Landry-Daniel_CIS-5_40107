@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Daniel Landry
  * Created on January 11, 2017, 4:16 PM
- * Purpose: To calculate the number of slices a pizza of any sixe can be 
+ * Purpose: To calculate the number of slices a pizza of any size can be 
  *          divided into.
  */
 //system Libraries
@@ -28,9 +28,9 @@ int main(int argc, char** argv) {
     cin>>diametr;
     
     //Process by mapping inputs to outputs
-    radius= diametr/2;
-    area= PIE*radius*radius;
-    slices= area/perslic;
+    radius= diametr/2;  //convert diameter to radius
+    area= PIE*radius*radius;  //find the total area
+    slices= area/perslic;  //dived the total area by the area of a single slice
     //output
     cout<<"This pizza can produce = "<<slices<<" slices"<<endl;
     cout<<"area = "<<area<<" inches squared."<<endl;

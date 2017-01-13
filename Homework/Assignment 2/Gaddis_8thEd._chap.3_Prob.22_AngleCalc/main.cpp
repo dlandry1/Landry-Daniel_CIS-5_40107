@@ -31,9 +31,9 @@ int main(int argc, char** argv) {
     cin>>radian;
     
     //Process by mapping inputs to outputs
-    cosval= cos(radian);
-    sinval= sin(radian);
-    tanval= tan(radian);
+    cosval= cos(radian);  //calculate cosine value
+    sinval= sin(radian);  //calculate the sine value
+    tanval= tan(radian);  //calculate the tangent value
     
     //Output values
     cout<<"The cosine value is = "<<cosval<<endl;

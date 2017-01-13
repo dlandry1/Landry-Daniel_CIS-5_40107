@@ -23,20 +23,17 @@ int main(int argc, char** argv) {
     float prcmale,prcfeml;
     //Input or initialize values Here
     
-    //Process/Calculations Here
-    
-    
-    //Output Located Here
     cout<<"Enter the number of Males in the class = "<<endl;
     cin>>males;
     cout<<"Enter the number of Females in the class = "<<endl;
     cin>>female;
-    
+   
+     //Process/Calculations Here
     total = males + female; //calculate the total number of student in the class
     prcmale =(males/total)*100;  //percent males in the class
     prcfeml = (female/total)*100;  //percent females in the class
     
-    
+    //Output Located Here
     cout<<"The total of student in class = "<<total<<endl;
     cout<<"The percentage of male students it = "<<prcmale<<"%"<<endl;
     cout<<"The percentage of Females students is = "<<prcfeml<<"%"<<endl;

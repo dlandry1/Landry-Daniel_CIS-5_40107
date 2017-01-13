@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     cin>>celsval;
     
     //Process by mapping inputs to outputs
-    fahrval=(9/5)*celsval+32;
+    fahrval=(9/5)*celsval+32;  //conversion equations from F to C
     
     //Output values
     cout<<"The Fahrenheit value is = "<<fahrval<<" degrees."<<endl;

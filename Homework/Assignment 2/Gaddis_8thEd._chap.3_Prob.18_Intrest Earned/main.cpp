@@ -2,8 +2,8 @@
   File:   main.cpp
   Author: Daniel Landry
   Created on January 9, 2017, 12:15 PM
-  Purpose:  Template to be used in all programming
-            projects!
+  Purpose:  A program that will display the interest rate, time compounded,
+ *          Principal amount, interest, and the amount in savings.
  */
 
 //System Libraries
@@ -37,9 +37,9 @@ int main(int argc, char** argv) {
     //Process by mapping inputs to outputs
     
     rate=intrate/PERCENT;
-    amount= prcipal*pow(1+rate/Tmscomp,Tmscomp);
-    intrest=amount-prcipal;
-    
+    amount= prcipal*pow(1+rate/Tmscomp,Tmscomp);  //calculates the total 
+    intrest=amount-prcipal;  //subtracts total from initial amount to produce -
+                             //the money gained through intrest. 
     //Output values
     cout<<"Interest rate     = "<<intrate<<"%"<<endl;
     cout<<"Times Compounded  = "<<Tmscomp<<endl;
