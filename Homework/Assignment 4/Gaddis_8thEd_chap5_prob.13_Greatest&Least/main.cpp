@@ -22,7 +22,7 @@ using namespace std;
 int main(int argc, char** argv) {
     //Declare Variables
     int series;  //the inputed series of numbers
-    int LrgNum, SmlNum, intgr; //Largest number, Smallest number 
+    int LrgNum, SmlNum; //Largest number, Smallest number 
     //Input values
     
     cout << "This program will determine the least and greatest numbers ";

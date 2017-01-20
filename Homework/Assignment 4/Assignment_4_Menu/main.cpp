@@ -20,15 +20,7 @@ using namespace std;
 //as well as conversions from system of units to another
 
 //Function Prototypes
-void prob1();
-void prob2();
-void prob3();
-void prob4();
-void prob5();
-void prob6();
-void prob7();
-void prob8();
-void prob9();
+
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -55,187 +47,141 @@ int main(int argc, char** argv) {
         switch(choice){
             case '1':{
                 cout<<"We are in Problem 1"<<endl;
-                prob1();        
+                                    /* 
+                     * File:   main.cpp
+                     * Author: Daniel Landry
+                     * Created on January 17, 2017, 5:16 PM
+                     * Purpose: Print characters 0 - 127 of ASCII
+                     */
+
+                        //Declare Variables
+                        int x;
+                        //input values
+
+                        //Process by mapping inputs to outputs
+
+                        //output
+                        while (x<= 127) {
+                            if(x%16== 0)
+                                cout<<endl;
+
+                            cout<<static_cast<char>(x)<<"    ";
+                            ++x;
+                    }
+                        //Exit stage right!
+                                     
                 break;
             }
             case '2':{
                 cout<<"We are in Problem 2"<<endl;
-                prob2();                    
+                            /* 
+               File:   main.cpp
+               Author: Daniel Landry
+               Created on January 18, 2017, 3:15 PM
+               Purpose:  To display the largest and smallest values inputed.
+              */
+
+                 //Declare Variables
+                 int series;  //the inputed series of numbers
+                 int LrgNum, SmlNum, intgr; //Largest number, Smallest number 
+                 //Input values
+
+                 cout << "This program will determine the least and greatest "
+                         "numbers ";
+                 cout<<"inputed.\n";
+                 cout<<"Input the series by separating each number with the "
+                         "[Enter] key.\n";
+                 cout<<"(enter -99 to signal the end of the series)"<<endl;
+                 cin>>series;
+                 LrgNum= series; //set largest number as the first number 
+                 //entered
+                 SmlNum= series; //set smallest number as the first number 
+                 //entered
+
+                 do{  
+
+                     if (series > LrgNum) { //change large number to the larger 
+                         //input number
+                         LrgNum = series;
+                     }
+
+                     if (series < SmlNum) { //change small number to the smaller 
+                         //input number
+                         SmlNum = series;
+                     }
+                    // cout<<" The largest number is = "<<LrgNum<<endl;
+                     //cout<<"The smallest number is = "<<SmlNum<<endl;
+
+                      cin>>series; 
+                 }while (series!= -99);
+
+
+               cout<<" The largest number is = "<<LrgNum<<endl;
+               cout<<"The smallest number is = "<<SmlNum<<endl;
+
+
+                 //Process by mapping inputs to outputs
+
+                 //Output values
+
+                 //Exit stage right!
+
+             
+                
                 break;
-            }
+        }
             case '3':{
                 cout<<"We are in Problem 3"<<endl;
-                prob3();                
+                        /* 
+         File:   main.cpp
+         Author: Daniel Landry
+         Created on January 19, 2017, 12:15 PM
+         Purpose:  To write a program that will budget for a month
+        */
+
+           //Declare Variables
+           float EstBudg, //estimated budget inputed by user
+                 numExp,  //number of expenses
+                   TotExp, //the total value of expenses
+                   ExpsVal;  //the value of an expense
+
+
+           //Input values
+           cout<<"This program will tell you if your over or under your set "
+                   "budget.\n";
+           cout<<"Enter your estimate budget for the month in dollars."<<endl;
+           cin>>EstBudg;
+           cout<<"How many expenses do you have?"<<endl;
+           cin>>numExp;
+           //Process by mapping inputs to outputs
+
+           //Loop
+           for (int Expns=1;Expns<=numExp;Expns++) {
+               cout<<"How much is expense "<<Expns<<" = $";
+               cin>>ExpsVal; //expense value
+              TotExp+=ExpsVal; //adding the expenses to total expenses
+
+           }
+
+           if (TotExp<EstBudg) {
+               cout<<"You are under you budget by = $"<<(EstBudg-TotExp)<<endl;
+           }   //output the net budget saved by subtracting from Budget
+           if (TotExp>EstBudg) {
+               cout<<"You are over your budget by = $"<<(TotExp-EstBudg)<<endl;
+           }   //output the net difference from your budget and total expenses
+           else {
+               cout<<"You are right on budget!"<<endl;
+           }
+
+           //Output values
+
+           //Exit stage right!
+                   
                 break;
             }
             case '4': {
                 cout<<"we are in Problem 4"<<endl;
-                prob4();
-                break;
-            }
-            case '5': {
-                cout<<"We are in Problem 4"<<endl;
-                prob5();
-                break;
-            }
-            case '6': {
-                cout<<"We are in Problem 5"<<endl;
-                prob6();
-                break;
-            }
-            case '7': {
-                cout<<"We are in Problem 6"<<endl;
-                prob7();
-                break;
-            }
-            case '8': {
-                cout<<"We are in Problem 7"<<endl;
-                prob8();
-                break;
-            }
-            case '9': {
-                cout<<"We are in Problem 8"<<endl;
-                prob9();
-                break;
-            }
-            default:
-                cout<<"You are exiting the program"<<endl;
-        }
-    }while(choice>='1'&&choice<='9');
-    
-    //Exit stage right!
-    return 0;
-}
-//111111111111111111111111111111111111111111111111111111111111111111111111111111
-//1111111111111111111111111 Problem 1 111111111111111111111111111111111111111111
-void prob1() {
- /* 
- * File:   main.cpp
- * Author: Daniel Landry
- * Created on January 17, 2017, 5:16 PM
- * Purpose: Print characters 0 - 127 of ASCII
- */
-    
-    //Declare Variables
-    int x;
-    //input values
-   
-    //Process by mapping inputs to outputs
-    
-    //output
-    while (x<= 127) {
-        if(x%16== 0)
-            cout<<endl;
-        
-        cout<<static_cast<char>(x)<<"    ";
-        ++x;
-}
-    //Exit stage right!
-    
-}
-
-//222222222222222222222222222222222222222222222222222222222222222222222222222222
-//222222222222222222222222 Problem 2 2222222222222222222222222222222222222222222
-void prob2() {
-/* 
-  File:   main.cpp
-  Author: Daniel Landry
-  Created on January 18, 2017, 3:15 PM
-  Purpose:  To display the largest and smallest values inputed.
- */
-
-    //Declare Variables
-    int series;  //the inputed series of numbers
-    int LrgNum, SmlNum, intgr; //Largest number, Smallest number 
-    //Input values
-    
-    cout << "This program will determine the least and greatest numbers ";
-    cout<<"inputed.\n";
-    cout<<"Input the series by separating each number with the [Enter] key.\n";
-    cout<<"(enter -99 to signal the end of the series)"<<endl;
-    cin>>series;
-    LrgNum= series; //set largest number as the first number entered
-    SmlNum= series; //set smallest number as the first number entered
-    
-    do{  
-        
-        if (series > LrgNum) { //change large number to the larger input number
-            LrgNum = series;
-        }
-        
-        if (series < SmlNum) { //change small number to the smaller input number
-            SmlNum = series;
-        }
-       // cout<<" The largest number is = "<<LrgNum<<endl;
-        //cout<<"The smallest number is = "<<SmlNum<<endl;
-  
-         cin>>series; 
-    }while (series!= -99);
-         
-        
-  cout<<" The largest number is = "<<LrgNum<<endl;
-  cout<<"The smallest number is = "<<SmlNum<<endl;
-   
-    
-    //Process by mapping inputs to outputs
-    
-    //Output values
-
-    //Exit stage right!
-   
-}
-//333333333333333333333333333333333333333333333333333333333333333333333333333333
-//33333333333333333333333 Problem 3 33333333333333333333333333333333333333333333
-void prob3() {
-/* 
-  File:   main.cpp
-  Author: Daniel Landry
-  Created on January 19, 2017, 12:15 PM
-  Purpose:  To write a program that will budget for a month
- */
-
-    //Declare Variables
-    float EstBudg, //estimated budget inputed by user
-          numExp,  //number of expenses
-            TotExp, //the total value of expenses
-            ExpsVal;  //the value of an expense
-            
-    
-    //Input values
-    cout<<"This program will tell you if your over or under your set budget.\n";
-    cout<<"Enter your estimate budget for the month in dollars."<<endl;
-    cin>>EstBudg;
-    cout<<"How many expenses do you have?"<<endl;
-    cin>>numExp;
-    //Process by mapping inputs to outputs
-    
-    //Loop
-    for (int Expns=1;Expns<=numExp;Expns++) {
-        cout<<"How much is expense "<<Expns<<" = $";
-        cin>>ExpsVal; //expense value
-       TotExp+=ExpsVal; //adding the expenses to total expenses
-        
-    }
-    
-    if (TotExp<EstBudg) {
-        cout<<"You are under you budget by = $"<<(EstBudg-TotExp)<<endl;
-    }   //output the net budget saved by subtracting from Budget
-    if (TotExp>EstBudg) {
-        cout<<"You are over your budget by = $"<<(TotExp-EstBudg)<<endl;
-    }   //output the net difference from your budget and total expenses
-    else {
-        cout<<"You are right on budget!"<<endl;
-    }
-    
-    //Output values
-
-    //Exit stage right!
-   
-}
-//444444444444444444444444444444444444444444444444444444444444444444444444444444
-//4444444444444444444444 Problem 4 444444444444444444444444444444444444444444444
-void prob4() {
-/* 
+                /* 
   File:   main.cpp
   Author: Daniel Landry
   Created on January 19, 2017, 6:15 PM
@@ -273,11 +219,12 @@ void prob4() {
 
     //Exit stage right!
   
-}
-//555555555555555555555555555555555555555555555555555555555555555555555555555555
-//5555555555555555555555 Problem 5 555555555555555555555555555555555555555555555
-void prob5() {
- /* 
+
+                break;
+            }
+            case '5': {
+                cout<<"We are in Problem 4"<<endl;
+                /* 
  * File:   main.cpp
  * Author: Daniel Landry
  * Created on Jan 18, 2017, 1:37 AM
@@ -311,11 +258,12 @@ void prob5() {
    
     //Exit
     
-}
-//666666666666666666666666666666666666666666666666666666666666666666666666666666
-//66666666666666666666666 Problem 6 66666666666666666666666666666666666666666666
-void prob6() {
-/* 
+
+                break;
+            }
+            case '6': {
+                cout<<"We are in Problem 5"<<endl;
+                /* 
  * File:   main.cpp
  * Author: Daniel Landry
  * Created on Jan 19, 2017, 12:07 AM
@@ -355,11 +303,12 @@ void prob6() {
 
     //Exit
     
-}
-//777777777777777777777777777777777777777777777777777777777777777777777777777777
-//77777777777777777777777 Problem 7 77777777777777777777777777777777777777777777
-void prob7() {
-/* 
+
+                break;
+            }
+            case '7': {
+                cout<<"We are in Problem 6"<<endl;
+                /* 
  * File:   main.cpp
  * Author: Daniel Landry
  * Created on January 17, 2017, 9:16 PM
@@ -488,11 +437,12 @@ void prob7() {
     
     //Exit stage right!
     
-}
-//888888888888888888888888888888888888888888888888888888888888888888888888888888
-//888888888888888888888888 Problem 8 8888888888888888888888888888888888888888888
-void prob8() {
-/* 
+
+                break;
+            }
+            case '8': {
+                cout<<"We are in Problem 7"<<endl;
+               /* 
  * File:   main.cpp
  * Author: Daniel Landry
  * Created on January 17, 2017, 6:36 PM
@@ -524,11 +474,12 @@ void prob8() {
     }
     //Exit stage right!
     
-}
-//999999999999999999999999999999999999999999999999999999999999999999999999999999
-//99999999999999999999999 Problem 9 99999999999999999999999999999999999999999999
-void prob9() {
-/* 
+
+                break;
+            }
+            case '9': {
+                cout<<"We are in Problem 8"<<endl;
+                /* 
  * File:   main.cpp
  * Author: Daniel Landry
  * Created on Jan 19, 2016, 12:07 AM
@@ -555,4 +506,15 @@ void prob9() {
     cout<<setprecision(7)<<fixed;
     cout<<"pi= "<<pi<<endl;
   
+
+                break;
+            }
+            default:
+                cout<<"You are exiting the program"<<endl;
+        }   
+    }while(choice>='1'&&choice<='9');
+   
+    //Exit stage right!
+    return 0;
+
 }
