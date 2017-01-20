@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Daniel Landry
  * Created on January 17, 2017, 5:16 PM
- * Purpose: Template to be used in all programming projects
+ * Purpose: Print characters 0 - 127 of ASCII
  */
 //system Libraries
 #include <iostream>

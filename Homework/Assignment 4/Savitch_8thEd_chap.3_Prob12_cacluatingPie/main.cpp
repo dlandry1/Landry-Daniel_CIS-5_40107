@@ -1,8 +1,8 @@
 /* 
  * File:   main.cpp
- * Author: Dr. Mark E. Lehr
- * Created on July 19, 2016, 9:07 AM
- * Purpose:  Hello World Template
+ * Author: Daniel Landry
+ * Created on Jan 17, 2016, 9:07 AM
+ * Purpose:  calculating Pi by multiplying n amount of times
  */
 
 //System Libraries Here
