@@ -10,6 +10,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -31,17 +32,24 @@ int main(int argc, char** argv) {
    int card2;
    char HorL;
    int wins=1;
+   float pot=2;
+   float PlrAmt= 50;
    
    //Big loop
   
    cout<<"\t\tThis is the game of High or Low\n\n"<<endl;
-   cout<<"Guess if the next card is Higher or Lower than the card shown.\n"<<endl;
-   cout<<"If you guess correct, your earnings double."<<endl;
+   cout<<"Guess if the next card is Higher or Lower than the card shown."<<endl;
+   cout<<"If you guess correct you double the value of the pot."<<endl;
+   cout<<"If you guess incorrect, you loose it all.\n";
+   cout<<"After a win you can choose to cash out, or stay and risk it all.\n";
+   cout<<"You start with $50.00."<<endl;
+   cout<<"Are you ready?"<<endl;
    cout<<"Press [Enter] to begin"<<endl;
    getline(cin,start);
-   for(int count=1; count<=wins;count++) {
+   do{
+   for(int count=1; count<=1.0e12 ;count++) {
        cout<<endl;
-   cout<<"The first card is :\n";
+   
    card1=rand()%13+1;
    card2=rand()%13+1;
    
@@ -101,11 +109,14 @@ int main(int argc, char** argv) {
    }
 //******************************************************************************
    //High or Low?
-   
    cout<<"Dealers card: "<<face1<<" with the value of "<<cardVal<<endl;
+   cout<<setprecision(2)<<fixed<<endl;
    cout<<endl;   
-   
-  cout<<"Guess if the next card is higher or lower than the one displayed.\n";
+   cout<<"Pot= $"<<pot<<endl;
+   cout<<endl;
+   cout<<"Player's earnings =$"<<PlrAmt<<endl;
+   cout<<endl;
+  cout<<"Guess if the next card is higher or lower than the Dealers.\n";
   cout<<"(type in 'h' for high or 'l' for low)"<<endl;
   cin>>HorL;
   
@@ -166,41 +177,45 @@ int main(int argc, char** argv) {
    }
   cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
 //******************************************************************************  
-  
-    
+  cout<<endl;
+ cout<<"**********************************************************************";
+ cout<<"******"<<endl;
+  cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
   if (HorL=='h') {
       if (cardVal<crdVal2){
-          cout<<"You win."<<endl;
+          cout<<"You win!"<<endl;
           wins++;
-          cout<<"your win count is now "<<wins<<endl;
+          pot+= pow(pot,2);
+          cout<<"Game: "<<count<<endl;
       }
       else if (cardVal>crdVal2){
-          cout<<"You lose."<<endl;
+          cout<<"You lose!"<<endl;
+          PlrAmt=PlrAmt-2;
       }
       else {
-          cout<<"You get a free win on your next game.\n"<<endl;
-          wins++;
-          wins++;
-          cout<<"your win count is now "<<wins<<endl;
+          cout<<"the pot is quadrupled!!\n"<<endl;
+          pot+=pow(pot,4);
+          cout<<"pot = "<<pot<<endl;
       }
   }
   if (HorL=='l') {
       if (cardVal>crdVal2){
           cout<<"You win."<<endl;
-          wins++;
-          cout<<"your win count is now "<<wins<<endl;
+          pot+=pow(pot,2);
+          cout<<"The Pot is now =$"<<pot<<endl;
       }
       else if (cardVal<crdVal2){
           cout<<"You lose."<<endl;
+          PlrAmt=PlrAmt-2;
       }
       else {
-          cout<<"You get a free win on your next game.\n"<<endl;
-          wins++;
-          wins++;
-          cout<<"your win count is now "<<wins<<endl;
+          cout<<"The pot is quadrupled!!\n"<<endl;
+          pot+=pow(pot,4);
+          cout<<"pot = "<<pot<<endl;
       }      
   }    
-       }   
+  } 
+   }while(PlrAmt!=0);
     
    return 0;
 }
