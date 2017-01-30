@@ -11,6 +11,7 @@
 #include <cstdlib>
 #include <string>
 #include <iomanip>
+#include <fstream>
 using namespace std;
 
 //User Libraries
@@ -27,29 +28,35 @@ int main(int argc, char** argv) {
     //Variables
    (srand(time(0)));
    float cardVal, crdVal2;
-   string start, face1, face2; 
-   int card1;
-   int card2;
+   string start, face1, //start, face1=face of dealer card, 
+           face2; // face2= face of player card 
+   unsigned short card1; //the Dealer card corresponding to card/face value
+   unsigned short card2; //Random card that corresponds with a face/card value
    char HorL;
-   int wins=1;
+   unsigned short games=1; //place holder for games
    float pot=2;
    float PlrAmt= 50;
+   unsigned short choice;
+   ofstream outFile; 
    
-   //Big loop
-  
+   
+  //program start
    cout<<"\t\tThis is the game of High or Low\n\n"<<endl;
    cout<<"Guess if the next card is Higher or Lower than the card shown."<<endl;
-   cout<<"If you guess correct you double the value of the pot."<<endl;
-   cout<<"If you guess incorrect, you loose it all.\n";
-   cout<<"After a win you can choose to cash out, or stay and risk it all.\n";
+   cout<<"If you guess correct, you double the value of the pot."<<endl;
+   cout<<"If you guess incorrect, you loose the pot value from your ";
+   cout<<"earnings.\n";
+   cout<<"After a win you can choose to cash out, add the winnings to your";
+   cout<<"earnings or double down to risk it all.\n\n";
+   cout<<"The max value of a card is 10, and the lowest is 2."<<endl;
    cout<<"You start with $50.00."<<endl;
    cout<<"Are you ready?"<<endl;
    cout<<"Press [Enter] to begin"<<endl;
    getline(cin,start);
-   do{
-   for(int count=1; count<=1.0e12 ;count++) {
-       cout<<endl;
    
+   for(int count=1; count<=1.0e12 ;count++) {
+        do{
+       cout<<endl;
    card1=rand()%13+1;
    card2=rand()%13+1;
    
@@ -109,9 +116,9 @@ int main(int argc, char** argv) {
    }
 //******************************************************************************
    //High or Low?
+   cout<<"******************************************************************\n";
    cout<<"Dealers card: "<<face1<<" with the value of "<<cardVal<<endl;
-   cout<<setprecision(2)<<fixed<<endl;
-   cout<<endl;   
+   cout<<setprecision(2)<<endl;  
    cout<<"Pot= $"<<pot<<endl;
    cout<<endl;
    cout<<"Player's earnings =$"<<PlrAmt<<endl;
@@ -119,7 +126,10 @@ int main(int argc, char** argv) {
   cout<<"Guess if the next card is higher or lower than the Dealers.\n";
   cout<<"(type in 'h' for high or 'l' for low)"<<endl;
   cin>>HorL;
-  
+  if (HorL!='h' || HorL!='l') {
+      cout<<"Invalid entry"<<endl;
+      cout<<"Will produce a new hand"<<endl;
+  } 
   //Generate card 2 ************************************************************
   
    if (card2>=9){
@@ -175,47 +185,183 @@ int main(int argc, char** argv) {
        crdVal2=2;
        face2="Two";
    }
-  cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
+  
 //******************************************************************************  
   cout<<endl;
  cout<<"**********************************************************************";
  cout<<"******"<<endl;
-  cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
+cout<<"Dealer Draw: "<<face1<<" with the value of "<<cardVal<<endl;
+cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
+cout<<endl;
+
+    
   if (HorL=='h') {
+ cout<<"**********************************************************************";
+        cout<<"******"<<endl;
+        cout<<"Dealer Draw: "<<face1<<" with the value of "<<cardVal<<endl;
+        cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
+        cout<<endl;
       if (cardVal<crdVal2){
           cout<<"You win!"<<endl;
-          wins++;
-          pot+= pow(pot,2);
+          for (int a=games; a<=games;games++){
           cout<<"Game: "<<count<<endl;
+          a++;
+          }
+        cout<<"What would you like to do next?(type 1,2,or 3)"<<endl;
+        cout<<"1. Double up (you lose pot value from your earnings)"<<endl;
+        cout<<"2. Save it (add the amount to your earnings)"<<endl;
+        cout<<"3. Cash out (cash out the printable check)"<<endl;
+        cin>>choice;
+        switch (choice) {
+            while (choice ==1 || choice==2 || choice== 3) {
+            case 1: {
+                pot+= pow(pot,2);
+                cout<<"The pot is now =$"<<pot<<endl;         
+            }
+            break;
+            case 2: {
+                PlrAmt+=pot;
+                cout<<"Your earnings are =$"<<PlrAmt<<endl;
+                pot=2;    
+            }
+            break;
+            case 3: {
+                cout<<"check"<<endl;
+                outFile.open;
+                outFile<<PlrAmt<<endl;
+            }
+            default:
+                cout<<"Invalid entry"<<endl;
+            }
+        }
+         
       }
       else if (cardVal>crdVal2){
           cout<<"You lose!"<<endl;
-          PlrAmt=PlrAmt-2;
+          cout<<"Game: "<<count<<endl;
+          PlrAmt=PlrAmt-pot;
+          pot=2;
       }
-      else {
-          cout<<"the pot is quadrupled!!\n"<<endl;
-          pot+=pow(pot,4);
-          cout<<"pot = "<<pot<<endl;
+      else {         
+          cout<<"You win!"<<endl;
+          cout<<"Game: "<<count<<endl;
+          cout<<endl;
+          cout<<"The pot is quadrupled!!\n"<<endl;
+        cout<<"What would you like to do next?(type 1,2,or 3)"<<endl;
+        cout<<"1. Double up (at the risk of losing more money)"<<endl;
+        cout<<"2. Save it (add the amount to your earnings)"<<endl;
+        cout<<"3. Cash out (cash out the printable check)"<<endl;
+        cin>>choice;
+        switch (choice) {
+            while (choice ==1 || choice==2 || choice== 3) {
+            case 1: {
+                pot+= pow(pot,4);
+                cout<<"The pot is now =$"<<pot<<endl;                
+            }
+            break;
+            case 2: {
+                PlrAmt+=pot;
+                cout<<"Your earnings are =$"<<PlrAmt<<endl;
+                pot=2;
+            }
+            break;
+            case 3: {
+                cout<<"check"<<endl;
+                ofstream.open("Check.txt");
+                ofstream<<PlrAmt<<endl;
+            }
+            default:
+                cout<<"Invalid entry"<<endl;
+            }
+        }
       }
   }
   if (HorL=='l') {
+ cout<<"**********************************************************************";
+        cout<<"******"<<endl;
+        cout<<"Dealer Draw: "<<face1<<" with the value of "<<cardVal<<endl;
+        cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
+        cout<<endl;
       if (cardVal>crdVal2){
-          cout<<"You win."<<endl;
-          pot+=pow(pot,2);
-          cout<<"The Pot is now =$"<<pot<<endl;
+          cout<<"You win!"<<endl;
+          cout<<"Game: "<<count<<endl;
+        cout<<"What would you like to do next?(type 1,2,or 3)"<<endl;
+        cout<<"1. Double up (at the risk of losing more money)"<<endl;
+        cout<<"2. Save it (add the amount to your earnings)"<<endl;
+        cout<<"3. Cash out (cash out the printable check)"<<endl;
+        cin>>choice;
+        switch (choice) {
+            while (choice ==1 || choice==2 || choice== 3) {
+            case 1: {
+                pot+= pow(pot,2);
+                cout<<"The pot is now =$"<<pot<<endl;                
+            }
+            break;
+            case 2: {
+                PlrAmt+=pot;
+                cout<<"Your earnings are =$"<<PlrAmt<<endl;
+                pot=2;
+            }
+            break;
+            case 3: {
+                cout<<"check"<<endl;
+                ofstream.open;
+                ofstream<<PlrAmt<<endl;
+            }
+            break;
+            default:
+                cout<<"Invalid entry"<<endl;
+            }
+        }
       }
       else if (cardVal<crdVal2){
           cout<<"You lose."<<endl;
-          PlrAmt=PlrAmt-2;
+          PlrAmt=PlrAmt-pot;
+          pot=2;
       }
       else {
+           cout<<"You win!"<<endl;
+          cout<<"Game: "<<count<<endl;
+          cout<<endl;
           cout<<"The pot is quadrupled!!\n"<<endl;
-          pot+=pow(pot,4);
-          cout<<"pot = "<<pot<<endl;
+        cout<<"What would you like to do next?(type 1,2,or 3)"<<endl;
+        cout<<"1. Double up (at the risk of losing more money)"<<endl;
+        cout<<"2. Save it (add the amount to your earnings)"<<endl;
+        cout<<"3. Cash out (cash out the printable check)"<<endl;
+        cin>>choice;
+        switch (choice) {
+            while (choice ==1 || choice==2 || choice== 3) {
+            case 1: {
+                pot+= pow(pot,4);
+                cout<<"The pot is now =$"<<pot<<endl;                
+            }
+            break;
+            case 2: {
+                PlrAmt+=pot;
+                cout<<"Your earnings are =$"<<PlrAmt<<endl;
+                pot=2;
+            }
+            break;
+            case 3: {
+                cout<<"check"<<endl;
+                ofstream.open("Check.txt");
+                ofstream<<PlrAmt<<endl;
+            }
+            default:
+                cout<<"Invalid entry"<<endl;
+            }
+        }
       }      
-  }    
-  } 
-   }while(PlrAmt!=0);
-    
+  }
+  
+  
+  }while(PlrAmt>=0); 
+  cout<<"Your out of money!!"<<endl;
+   cout<<"GAME OVER"<<endl;    
+  return 0;
+   }
+
+   cout<<"Your out of money!!"<<endl;
+   cout<<"GAME OVER"<<endl;    
    return 0;
 }
