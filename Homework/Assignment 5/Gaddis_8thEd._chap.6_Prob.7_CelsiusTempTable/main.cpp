@@ -18,7 +18,7 @@ using namespace std;
 //another
 
 //Function Prototypes
-float celcius(float);
+float celc(float);
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     
     //Process by mapping inputs to outputs
     for (float tempF=0; tempF<=20; tempF++){
-        C=celcius(tempF);
+        C=celc(tempF);
         cout<<"Fahrenheit | Celsius "<<endl;
         cout<<tempF<<"F        "<<C<<"C"<<endl;
     }
@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 }
 
 //******************************************************************************
-float celcius(float tempF){
+float celc(float tempF){
     float C;
     cout<<setprecision(1)<<fixed;
     C= (5*tempF-32)/9;

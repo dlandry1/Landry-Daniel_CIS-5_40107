@@ -15,13 +15,13 @@ using namespace std;
 //Like PI, e, Gravity, or conversions
 
 //Function Prototypes Here
-float getSales(string);
-void findHighest(float, float, float, float);
+float getSals(string);
+void fndTop(float, float, float, float);
 
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //Declare all Variables Here
-    float SEast,NEast, NWest,SWest;
+    float SEast=0,NEast=0, NWest=0,SWest=0;
     
     
     //Input or initialize values Here
@@ -32,19 +32,19 @@ int main(int argc, char** argv) {
     //Process/Calculations Here
 
     //Output Located Here
-    NEast = getSales("Northeast");
-    SEast= getSales("Southeast");
-    NWest= getSales("Northwest");
-    SWest= getSales("Southwest");
+    NEast = getSals("Northeast");
+    SEast= getSals("Southeast");
+    NWest= getSals("Northwest");
+    SWest= getSals("Southwest");
    
-    findHighest(NEast, SEast, NWest, SWest);
+    fndTop(NEast, SEast, NWest, SWest);
 
     //Exit
     return 0;
 }
 //******************************************************************************
 //******************************************************************************
-float getSales(string division){
+float getSals(string division){
     float result;
     do{
         cout<<"What is "<<division<<"'s quarterly sales figure in dollars?\n";
@@ -55,7 +55,7 @@ float getSales(string division){
 //******************************************************************************
 //******************************************************************************
 
-void findHighest(float NEast, float SEast, float NWest, float SWest){
+void fndTop(float NEast, float SEast, float NWest, float SWest){
     
     float sales = NEast;
     string division=" ";
@@ -63,7 +63,7 @@ void findHighest(float NEast, float SEast, float NWest, float SWest){
     if (SEast > sales) {sales = SEast; division="Southeast";}
     if (NWest > sales) {sales = NWest; division="Northwest";}
     if (SWest > sales) {sales = SWest; division="Southwest";}
-    if (NEast > sales) {sales = NEast; division= "Northeast";}
+    if (NEast >= sales) {sales = NEast; division= "Northeast";}
     
     cout<<division<<" has the highest sales at $"<<sales<<endl;
     //output highest    
