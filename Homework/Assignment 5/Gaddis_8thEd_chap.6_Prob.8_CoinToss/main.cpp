@@ -17,7 +17,7 @@ using namespace std;
 //Like PI, e, Gravity, or conversions
 
 //Function Prototypes Here
-int coinToss();
+int cnToss();
 
 //Program Execution Begins Here
 int main(int argc, char** argv) {
@@ -35,11 +35,22 @@ int main(int argc, char** argv) {
     //Process/Calculations Here
     for (int toss=1;toss<=n;toss++){
         cout<<"Toss "<<toss<<": ";
-        coinToss();
+        cnToss();
     }
+  
     //Output Located Here
 
     //Exit
     return 0;
 }
-
+int cnToss(){
+    int face=0; //face coin lands on
+    
+    face=rand()%2+1;    
+if (face==1){  
+    cout<<"Heads"<<endl;            
+} 
+if (face==2) {
+        cout<<"Tails"<<endl; 
+    }
+}

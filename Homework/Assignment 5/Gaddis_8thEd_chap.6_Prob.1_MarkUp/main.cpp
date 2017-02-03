@@ -7,6 +7,7 @@
 
 //System Libraries
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -18,7 +19,7 @@ using namespace std;
 const char PERCENT = 100;
 
 //Function Prototypes
-void calcRet();
+void calcRet(float, float);
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -42,7 +43,7 @@ float   WholSal,  //whole sale price
    
     //Loop
     if (WholSal > 0 ||Markprc > 0) {
-    calcRet();                 
+    calcRet(WholSal, Markprc);                 
     } else {
     cout<<"Error. This is not a positive value.\n";
     cout<<"Enter in positive whole sale value.\n"; 
@@ -60,12 +61,10 @@ return 0;
 // Purpose: to calculate retail value    
     
    
-    void calcRet() 
+    void calcRet(float WholSal, float Markprc) 
     {
-        float   WholSal,  //whole sale price
-        Markprc,  //Mark up percentage
-        RetVal;  //Retail value price
-        
+        float RetVal;  //Retail value price
+        cout<<setprecision(2)<<fixed;
         RetVal= WholSal + (WholSal*(Markprc/PERCENT));
         cout<<"This items retail price is = $"<<RetVal<<endl;
                

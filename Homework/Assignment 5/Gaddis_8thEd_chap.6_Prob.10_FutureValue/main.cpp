@@ -36,6 +36,7 @@ int main(int argc, char** argv) {
    cout<<"What is the current amount in the savings account?\n";
    cin>>P;
    cout<<"What is the monthly interest rate on the savings account?\n";
+   cout<<"(as a percent)\n";
    cin>>i;
    cout<<"How many months will the money be left in the account?\n";
    cin>>t;
@@ -52,7 +53,8 @@ int main(int argc, char** argv) {
 
 float futVal(float P,float i,float t){
     float F;
+    float Rate =i/100;
     cout<<setprecision(2)<<fixed; 
-    F=P*(pow((1+i),t));
+    F=P*(pow((1+Rate),t));
     return F;
 }
