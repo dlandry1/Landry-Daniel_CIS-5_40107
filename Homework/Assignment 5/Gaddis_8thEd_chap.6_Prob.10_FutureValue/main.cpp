@@ -55,6 +55,6 @@ float futVal(float P,float i,float t){
     float F;
     float Rate =i/100;
     cout<<setprecision(2)<<fixed; 
-    F=P*(pow((1+Rate),t));
+    F=P*(pow((1+Rate),t));  //equation for future value
     return F;
 }

@@ -16,23 +16,22 @@ using namespace std;
 //Like PI, e, Gravity, or conversions
 
 //Function Prototypes Here
-float nRooms();
-float PrcPnt();
-void Charges(float, float);
+float nRooms(); //number of rooms and sqr feet of the wall
+float PrcPnt(); //price of paint
+void Charges(float, float); //the total charges are calculate
 
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //Declare all Variables Here
-    float TSqrFt, PPaint;
+    float TSqrFt, PPaint; //sqr ft and the price of paint
     
     //Input or initialize values Here
     cout<<"This program will estimate the cost of a Paint job."<<endl;
     
     //Process/Calculations Here
-    TSqrFt= nRooms();
-    PPaint= PrcPnt();
-    Charges(TSqrFt, PPaint);
-    
+    TSqrFt= nRooms(); //square footage of each room
+    PPaint= PrcPnt(); //price of paint
+    Charges(TSqrFt, PPaint); //calculate the charge
     //Output Located Here
     
 
@@ -48,14 +47,14 @@ float nRooms(){
    do{
     cout<<"How many rooms are to be painted?"<<endl;
     cout<<"(value must be at least one)"<<endl;
-    cin>>nRooms;
+    cin>>nRooms; //number of rooms
    } while(nRooms<1);
    
-    for (int i= 1;i<=nRooms;i++) {
+    for (int i= 1;i<=nRooms;i++) { //square ft per room
        do{
            cout<<"How many square feet room "<<i<<"?"<<endl;
            cout<<"(can not be a negative value)"<<endl;
-        cin>>sqrfeet;
+        cin>>sqrfeet; //square feet of a room
        }while (sqrfeet<0);
        
         Totsqft+=sqrfeet;
@@ -69,7 +68,7 @@ float nRooms(){
 
 float PrcPnt(){
     float PPaint;
-    do{
+    do{ //input control
     cout<<"What is the price per gallon of paint?"<<endl;
     cout<<"(must be $10 or more)"<<endl;
     cin>>PPaint;
@@ -81,16 +80,16 @@ float PrcPnt(){
 
 void Charges(float TSqrFt,float PrcPnt){
     float galn= 110;
-    float Totgal;
-    float HrsLabr;
-    float LCharg;
-    float Total;
-    
+    float Totgal; //total paint required
+    float HrsLabr; //hours of labor
+    float LCharg;  //labor cost
+    float Total;  //total of all
+     
     Totgal= TSqrFt/galn;
     HrsLabr= Totgal*8;
     LCharg= HrsLabr*25.00f;
-    
-    Total= LCharg+PrcPnt;
+     
+    Total= LCharg+PrcPnt;  //total of paint and labor
     cout<<setprecision(2)<<fixed;
     cout<<"The number of gallons of paint required = "<<Totgal<<" gals."<<endl;
     cout<<"The hours of labor required = "<<HrsLabr<<" hours."<<endl;

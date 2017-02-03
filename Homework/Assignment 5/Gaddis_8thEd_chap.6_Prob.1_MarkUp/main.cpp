@@ -19,7 +19,7 @@ using namespace std;
 const char PERCENT = 100;
 
 //Function Prototypes
-void calcRet(float, float);
+void calcRet(float, float); //calculate retail value
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -58,9 +58,7 @@ return 0;
 //******************************************************************************
 //******************** Calculate Retail Value **********************************
 //******************************************************************************
-// Purpose: to calculate retail value    
-    
-   
+// Purpose: to calculate retail value      
     void calcRet(float WholSal, float Markprc) 
     {
         float RetVal;  //Retail value price

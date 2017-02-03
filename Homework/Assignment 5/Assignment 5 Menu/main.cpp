@@ -31,23 +31,23 @@ void prob6();
 void prob7();
 void prob8();
 void prob9();
-void calcRet(float, float);
-float getSals(string);
-void fndTop(float, float, float, float);
-float Fallingdistance(float);
-float celc(float);
-int cnToss();
-float futVal(float,float,float);
-void JData(float&);
-void CalcScr(float, float, float, float, float);
-float FndLow(float, float, float, float, float);
-float FndHigh(float, float, float, float, float);
-float NumbEmp();
-float MisDays(int);
-float AvgMDay(int,int);
-float nRooms();
-float PrcPnt();
-void Charges(float, float);
+void calcRet(float, float); // Problem 1
+float getSals(string);//problem 2
+void fndTop(float, float, float, float);//Problem 2
+float Fallingdistance(float);//Problem 3
+float celc(float); // Problem 4
+int cnToss();//Problem 5
+float futVal(float,float,float);// problem 6
+void JData(float&);//Problem 7
+void CalcScr(float, float, float, float, float);// Prob 7
+float FndLow(float, float, float, float, float);//Prob 7
+float FndHigh(float, float, float, float, float);//Prob 7
+float NumbEmp();// Prob 8
+float MisDays(int);// Prob8
+float AvgMDay(int,int);//Prob8
+float nRooms();//Prob 9
+float PrcPnt();//Prob9
+void Charges(float, float);//Prob9
 
 
 //Executable code begins here!!!

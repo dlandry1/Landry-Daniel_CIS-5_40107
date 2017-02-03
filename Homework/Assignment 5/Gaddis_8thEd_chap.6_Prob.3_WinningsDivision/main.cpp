@@ -1,6 +1,6 @@
 /* 
  * File:   main.cpp
- * Author: Danile Landry
+ * Author: Daniel Landry
  * Created on Jan 31, 2016, 12:47 AM
  * Purpose:  Greatest same for a quarter.
  */
@@ -22,7 +22,7 @@ void fndTop(float, float, float, float);
 int main(int argc, char** argv) {
     //Declare all Variables Here
     float SEast=0,NEast=0, NWest=0,SWest=0;
-    
+    // all the divisions
     
     //Input or initialize values Here
     cout<<"This program will determine which of the four company divisions \n";
@@ -32,10 +32,10 @@ int main(int argc, char** argv) {
     //Process/Calculations Here
 
     //Output Located Here
-    NEast = getSals("Northeast");
-    SEast= getSals("Southeast");
-    NWest= getSals("Northwest");
-    SWest= getSals("Southwest");
+    NEast = getSals("Northeast"); //northeast string division
+    SEast= getSals("Southeast"); //southeast string division 
+    NWest= getSals("Northwest"); //Northwest string division
+    SWest= getSals("Southwest"); //Southwest string division
    
     fndTop(NEast, SEast, NWest, SWest);
 
@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
 }
 //******************************************************************************
 //******************************************************************************
-float getSals(string division){
+float getSals(string division){ 
     float result;
     do{
         cout<<"What is "<<division<<"'s quarterly sales figure in dollars?\n";
@@ -59,7 +59,7 @@ void fndTop(float NEast, float SEast, float NWest, float SWest){
     
     float sales = NEast;
     string division=" ";
-    
+
     if (SEast > sales) {sales = SEast; division="Southeast";}
     if (NWest > sales) {sales = NWest; division="Northwest";}
     if (SWest > sales) {sales = SWest; division="Southwest";}

@@ -20,15 +20,16 @@ using namespace std;
 //another
 
 //Function Prototypes
-void JData(float&);
-void CalcScr(float, float, float, float, float);
-float FndLow(float, float, float, float, float);
-float FndHigh(float, float, float, float, float);
+void JData(float&);  //get judge data
+void CalcScr(float, float, float, float, float); //calculate score
+float FndLow(float, float, float, float, float); //find lowest
+float FndHigh(float, float, float, float, float); //find highest
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables          
     float score1=0, score2=0, score3=0 ,score4=0 ,score5=0;
+    //scores for the corresponding judge
     
     //Input values
     cout<<"This program will calculate a contestants score."<<endl;   
@@ -48,7 +49,7 @@ int main(int argc, char** argv) {
     
     
     //Output values
-   CalcScr(score1,score2,score3,score4,score5);
+   CalcScr(score1,score2,score3,score4,score5); 
 
     //Exit stage right!
    return 0;
@@ -57,7 +58,7 @@ int main(int argc, char** argv) {
 //******************************************************************************
 //************************ Judge Data ******************************************
 
-void JData(float &Refscor){
+void JData(float &Refscor){ //edit score# through refrence
     do{
     cout<<"What is your score?"<<endl;
     cin>>Refscor;

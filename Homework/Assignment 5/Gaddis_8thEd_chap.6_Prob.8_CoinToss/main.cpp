@@ -22,7 +22,7 @@ int cnToss();
 //Program Execution Begins Here
 int main(int argc, char** argv) {
     //seed random number 
-    srand(time(0));
+    srand(time(0)); //seed RandNumb
     
     //Declare all Variables Here
     int n; //number of coin tosses
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     
     //Process/Calculations Here
     for (int toss=1;toss<=n;toss++){
-        cout<<"Toss "<<toss<<": ";
+        cout<<"Toss "<<toss<<": "; //increment toss with toss number
         cnToss();
     }
   
@@ -48,9 +48,9 @@ int cnToss(){
     
     face=rand()%2+1;    
 if (face==1){  
-    cout<<"Heads"<<endl;            
+    cout<<"Heads"<<endl;   // if land on 1= heads      
 } 
 if (face==2) {
-        cout<<"Tails"<<endl; 
+        cout<<"Tails"<<endl;  //if 2= tails
     }
 }

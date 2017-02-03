@@ -45,6 +45,6 @@ int main(int argc, char** argv) {
 float celc(float tempF){
     float C;
     cout<<setprecision(1)<<fixed;
-    C= (5*tempF-32)/9;
+    C= (5*tempF-32)/9; //conversion formula from F to Celc
     return C;
 }

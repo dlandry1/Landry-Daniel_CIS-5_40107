@@ -17,9 +17,9 @@ using namespace std;
 //another
 
 //Function Prototypes
-float NumbEmp();
-float MisDays(int);
-float AvgMDay(int,int);
+float NumbEmp();  //number of employees
+float MisDays(int);  //total missed days
+float AvgMDay(int,int);  //average missed days
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -32,9 +32,9 @@ int main(int argc, char** argv) {
    cout<<"This program will calculate the average number of days a company's\n";
    cout<<"employees are absent."<<endl;
    
-    nEmpl= NumbEmp(); 
-    MTot= MisDays(nEmpl);
-    avgMDay= AvgMDay(nEmpl,MTot);
+    nEmpl= NumbEmp(); //output the number of employees as variable
+    MTot= MisDays(nEmpl);  //missed days as variable
+    avgMDay= AvgMDay(nEmpl,MTot);  //average missed days as variable
     
     //Process by mapping inputs to outputs
     
@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
 //******************************************************************************
 //************************ Number of Employees *********************************
 float NumbEmp(){
-    int nEmpl;
+    int nEmpl; //number  employees
       do {
     cout<<"Input the number of employees in the company."<<endl;
     cout<<"(number must be greater than one)"<<endl;
@@ -62,12 +62,12 @@ float NumbEmp(){
 //******************************************************************************
 //************************* Missed Days Total **********************************
 float MisDays(int nEmpl){
-    int Mdays, MTot;
+    int Mdays, MTot; 
     do{
   cout<<"How many days has each employee missed during the past year?"<<endl;
   cin>>Mdays;
     } while (Mdays<0);
-    cout<<"nEmpl ="<<nEmpl<<endl;
+    cout<<"nEmpl ="<<nEmpl<<endl; 
   MTot=Mdays;
   return MTot;
 }
@@ -75,7 +75,7 @@ float MisDays(int nEmpl){
 //******************************************************************************
 //******************************************************************************
 float AvgMDay(int MTot,int nEmpl){
-    float avgMDay;
+    float avgMDay; 
     cout<<"MTot ="<<MTot<<endl;
     cout<<"nEmpl ="<<nEmpl<<endl;
     
