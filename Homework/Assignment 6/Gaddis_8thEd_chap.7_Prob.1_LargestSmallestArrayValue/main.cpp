@@ -27,30 +27,22 @@ int main(int argc, char** argv) {
     cout<<"This program will pick the highest and lowest numbers from a "
             "set of 10 inputed values"<<endl;
     cout<<endl;
-    
-    cout<<"Input a number: ";
-    cin>>Store[0];
-    lowest=highest=Store[0];
+   
     
     for (int c=1;c<=ArSize;c++) {
     cout<<"Input a number: ";
-    cin>>Store[c];
-            
-    if(Store[c]<lowest) {lowest= Store[c];}
-    if (Store[c]> highest) {highest= Store[c];}
-    
-    cout<<"Highest number stored = "<<highest<<endl;
-    cout<<"Lowest number stored = "<<lowest<<endl;
+    cin>>Store[c];    
     }
-    
+    lowest=highest=Store[1];
     
     //Process/Calculations Here
-    
-    
+    for (int a=1;a<=ArSize;a++) {    
+    if(Store[a]<lowest) lowest= Store[a];
+    if (Store[a]> highest) highest= Store[a];
+    }
     //Output Located Here
-    
-
+   cout<<"Highest number stored = "<<highest<<endl;
+    cout<<"Lowest number stored = "<<lowest<<endl; 
     //Exit
     return 0;
 }
-
