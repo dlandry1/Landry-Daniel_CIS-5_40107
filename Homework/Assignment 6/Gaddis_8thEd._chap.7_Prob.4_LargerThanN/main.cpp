@@ -22,6 +22,7 @@ void NLarger(int, int [], int);
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables
+    int SIZE= 20;
     int n; //number 
     int Numbr[]= {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
     //array to hold numbers
