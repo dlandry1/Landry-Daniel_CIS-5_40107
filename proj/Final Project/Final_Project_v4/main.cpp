@@ -12,6 +12,7 @@
 #include <string>
 #include <iomanip>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 //User Libraries
@@ -26,9 +27,8 @@ string FacVal1(unsigned short = 10);
 string FacVal2(unsigned short = 10);
 float winMenu(float&,float&);
 void Stats(float[],float[], int);
-void Stats(int,string[], int, float[][5]);
- bool isValid();
- 
+void Stats(int,string[], int, float[][5],vector<unsigned int>);
+int linSrch(vector<unsigned int>,int ,int, float[], float []);
  
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -46,16 +46,18 @@ int main(int argc, char** argv) {
    float PlrAmt=50; //starting value for player
    float nGame[SIZE]= {};
    int nPlyrs= SIZE/10;
-   bool Msafe= true;
+   vector<unsigned int>myVect(SIZE);
    float pot=2; //pot value displayed
-   
+   bool error= false;
    bool safe =false;
-   float choice; //switch choice
-   float plyrScr[SIZE][5]; 
+   int val;
+   float plyrScr[SIZE][5]={}; 
    int a=0; //counter for games
    string Plyrs[nPlyrs]= {"John","Bill","Sarah", "Dan","Mark"};
    char choice2; //choice for viewing high score
- 
+   
+   //declaration of functions that require other variables.
+ void bubble(vector <unsigned int>&myVect,int SIZE);
    
    ofstream outFile;
    ifstream inFile;
@@ -76,8 +78,7 @@ int main(int argc, char** argv) {
    cout<<"You start with $50.00."<<endl;
    cout<<"If you'd like to start at a predetermined balance, ";
    cout<<"type the integer value into the file ";
-   cout<<"'Earnings' in this games folder\n";
-       
+   cout<<"'Earnings' in this games folder\n";       
    cout<<endl;
    cout<<"Are you ready?"<<endl;
    
@@ -92,16 +93,23 @@ int main(int argc, char** argv) {
    cardVal[c] =rand()%13+2;  //randomly generate card 2
     }
     
-    for (int i=0; i<nPlyrs; i++){
-        for(int j=0; j<SIZE; j++){
-            plyrScr[i][j]= rand()%1000000+1; //generate scores
+ //2D array   
+    for (int i=0; i<SIZE; i++){
+        for(int j=0; j<nPlyrs; j++){
+            plyrScr[i][j]= rand()%1000+1; //generate scores
         }
     }  
+      
+    //player X score board
+    for (unsigned int i=0; i<myVect.size(); i++){
+        myVect[i]= rand()%10000+50;
+    }
     
-    
+    bubble(myVect,SIZE);
+
     
     crdVal1= cardVal[0];
-    crdVal2= cardVal[1];
+    crdVal2= cardVal[30];
     
 //Generates card 1 *************************************************************
 face1 = FacVal1(crdVal1);
@@ -120,7 +128,6 @@ face1 = FacVal1(crdVal1);
     for (int i=0;i<SIZE;i++){
         nGame[i]=(i+1); //games count
     }        
-   
             
 games>10?cout<<"You've played over ten games!!"<<endl:cout<< 
         "Reach over 50 games and get $1,000,000!"<<endl;  //Reach over ten games  
@@ -153,8 +160,12 @@ cout<<"*********************************************************************\n";
         cout<<endl;        
 cout<<"*********************************************************************\n"; 
       if (crdVal1<crdVal2){
-        winMenu(PlrAmt,pot); 
-        
+        error= winMenu(PlrAmt,pot); 
+         if (error==true){
+             cout<<"Invalid entry"<<endl;
+             cout<<"Restart and try again."<<endl;
+             return 0;
+      }
       }
       else if (crdVal1>crdVal2){ //lose guess=high, card=low
           cout<<"You lose!"<<endl;
@@ -163,19 +174,27 @@ cout<<"*********************************************************************\n";
       }
       else {
           cout<<"You tied! A tie still counts as a win"<<endl;
-          winMenu(PlrAmt,pot); 
-          
-      }
-  }
-else if (HorL=='l') {
+          error= winMenu(PlrAmt,pot); 
+         if (error==true) {
+             cout<<"Invalid entry"<<endl;
+             cout<<"Restart and try again."<<endl;
+             return 0;         
+        }
+    }
+
+  } else if (HorL=='l') {
 cout<<"*********************************************************************\n";
         cout<<"Dealer Draw: "<<face1<<" with the value of "<<crdVal1<<endl;
         cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
         cout<<endl;
 cout<<"*********************************************************************\n";
       if (crdVal1>crdVal2){ 
-         winMenu(PlrAmt,pot); 
-           
+         error= winMenu(PlrAmt,pot); 
+         if (error==true) {
+             cout<<"Invalid entry"<<endl;
+             cout<<"Restart and try again."<<endl;
+             return 0;
+      }
       }
       else if (crdVal1<crdVal2){ //lose if guess low, card high
           cout<<"You lose."<<endl;
@@ -184,8 +203,14 @@ cout<<"*********************************************************************\n";
       }
       else {
           cout<<"You tied! A tie still counts as a win"<<endl;
-          winMenu(PlrAmt,pot); 
+          error= winMenu(PlrAmt,pot); 
+          
+         if (error==true){
+             cout<<"Invalid entry"<<endl;
+             cout<<"Restart and try again."<<endl;
+             return 0;
       }
+    }
   } else {
     safe=true;
     while(safe) {
@@ -196,32 +221,43 @@ cout<<"*********************************************************************\n";
     }
   }
   
+  
+  
+  
+  if (PlrAmt < 0){
+   cout<<"Your out of money!!"<<endl;
+   cout<<"GAME OVER"<<endl; 
+    Stats(nGame,nMoney,SIZE); 
+    Stats(SIZE,Plyrs,nPlyrs,plyrScr, myVect);
+    cout<<"You can search for your player amount at any game by typing in the "
+            "game number here."<<endl;
+    cout<<"Enter in the specific game number you wish to see data for."<<endl;
+    cin>>val;
+    linSrch(myVect,SIZE,val,nGame,nMoney);    
+   return 0;
+}
 
-}while(PlrAmt>=0 || games < 50); 
+}while(games < 50); 
 
   //game over if player amount get to zero
 if (games >50 ) PlrAmt+=1000000;
-   cout<<"Your out of money!!"<<endl;
-   cout<<"GAME OVER"<<endl; 
-    cout<<"Here are your end game Stats."<<endl;
-
- Stats(nGame,nMoney,SIZE); 
-
-
-cout<<"Would you like to see other player's high scores?"
+cout<<"Would you like to see your stats?"
         "('y' for yes, 'n' for no)"<<endl;
 cin>>choice2;
 if (choice2=='y'){
-    Stats(SIZE,Plyrs,nPlyrs,plyrScr);
-}
-
-
+    Stats(nGame,nMoney,SIZE); 
+    Stats(SIZE,Plyrs,nPlyrs,plyrScr, myVect);
+    cout<<"You can search for your player amount at any game by typing in the "
+            "game number here."<<endl;
+    cout<<"Enter in the specific game number you wish to see data for."<<endl;
+    cin>>val;    
+ linSrch(myVect,SIZE,val,nGame,nMoney);
+}         
 else{
    inFile.close();
    outFile.close(); 
   return 0;
 }
-
 }
 
 
@@ -336,7 +372,7 @@ string FacVal2(unsigned short crdVal2 ){
 //******************************************************************************
 //******************************************************************************
 float winMenu(float &PlrAmt,float &pot){
-    unsigned int choice;
+   static int choice;
     ofstream outFile;
     cout<<"You win!"<<endl; //win if guess high, car high
          //double, save or cash out
@@ -345,6 +381,8 @@ float winMenu(float &PlrAmt,float &pot){
         cout<<"2. Save it (add the amount to your earnings)"<<endl;
         cout<<"3. Cash out (cash out the printable check)"<<endl;
         cin>>choice;  
+        
+        if (choice<1 || choice >3) {return true;}
         
         switch (choice) {
            
@@ -356,8 +394,8 @@ float winMenu(float &PlrAmt,float &pot){
             case 2: {
                 PlrAmt+=pot;
                 cout<<"Your earnings are =$"<<PlrAmt<<endl;
-                pot=2; 
-            
+                pot=2;  
+                return 0;
             }
             break;
             case 3: {
@@ -375,9 +413,9 @@ float winMenu(float &PlrAmt,float &pot){
 
 //******************************************************************************
 //******************************************************************************
- void Stats(float nGame[], float nMoney[], int SIZE){
+ void Stats(float nGame[], float nMoney[], int SIZE){     
      cout<<"Your amount per game:"<<endl;
-        for (int j=0; j< 50; j++){
+        for (int j=0; j< SIZE; j++){
         cout<<"Game "<<nGame[j]<<":     $"<<nMoney[j]<<endl; //parallel array
       }
     }
@@ -385,14 +423,50 @@ float winMenu(float &PlrAmt,float &pot){
  //*****************************************************************************
  //*****************************************************************************
  
-void  Stats(int SIZE, string Plyrs[],int nPlyrs,float plyrScr[][5]){      
+void  Stats(int SIZE, string Plyrs[],int nPlyrs,float plyrScr[][5], 
+        vector<unsigned int> myVect){ 
+    
+    cout<<"Player X"<<endl;
+    for(int i=0;i<myVect.size();i++){
+        cout<<"Games "<<(i+1)<<":   $"<<myVect[i]<<" \n";
+    }
+    cout<<endl;   
+    
     for (int i=0; i<nPlyrs; i++){
        cout<<"Player "<<static_cast<string>(Plyrs[i])<<endl;
         for(int j=0; j<SIZE; j++){
-            cout<<"Game "<<(j+1)<<"   $"<<plyrScr[i][j]<<" \n";
+            cout<<"Game "<<(j+1)<<":   $"<<plyrScr[i][j]<<" \n";
         }
         cout<<endl;
     }
+}
+//******************************************************************************
+//******************************************************************************
+void bubble(vector <unsigned int> &myVect,int SIZE){
+     bool swap;
+    int temp;
+    do{
+        swap=false;
+        for(int i=0;i<(SIZE)-1;i++){
+            if(myVect[i]>myVect[i+1]){
+                temp=myVect[i];
+                myVect[i]=myVect[i+1];
+                myVect[i+1]=temp;
+                swap=true;
+            }
+        }
+    }while(swap);
+}
+//******************************************************************************
+//******************************************************************************
+int linSrch(vector<unsigned int> myVect,int SIZE,int val, float nGame[],
+        float nMoney[])
+        {        
+            for(int i= 0; i<(SIZE); i++){
+        if(nGame[i]==val){
+            cout<<"Game "<<(i+1)<<":   $"<<nMoney[i]<<endl;  
+    }
+}
 }
 //******************************************************************************
 //******************************************************************************
