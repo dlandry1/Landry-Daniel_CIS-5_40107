@@ -47,10 +47,10 @@ int main(int argc, char** argv) {
    int nPlyrs= SIZE/10;
    vector<unsigned int>myVect(SIZE);
    float pot=2; //pot value displayed
-   bool error= false;
-   bool safe =false;
-   int val;
-   float plyrScr[SIZE][5]={}; 
+   bool error= false; //bool check for switch menu
+   bool safe =false;  //bool check for HorL
+   int val; //game number to transfer to function
+   float plyrScr[SIZE][5]={}; //other player scores
    int a=0; //counter for games
    string Plyrs[nPlyrs]= {"John","Bill","Sarah", "Dan","Mark"};
    char choice2; //choice for viewing high score
@@ -133,7 +133,7 @@ games>10?cout<<"You've played over ten games!!"<<endl:cout<<
 // encouraging message
 
    cout<<"Dealers card: "<<face1<<" with the value of "<<crdVal1<<endl;
-   cout<<setprecision(1)<<fixed;  //set precision for decimal if it occurs        
+   cout<<setprecision(2)<<fixed;  //set precision for decimal if it occurs        
         
   inFile>>PlrAmt;
   cout<<"Pot= $"<<pot<<endl; //display pot value
