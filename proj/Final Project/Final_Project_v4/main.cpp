@@ -35,7 +35,6 @@ int main(int argc, char** argv) {
     //Variables
    (srand(time(0)));
    const int SIZE= 50;
-   int Colm=1;
    float nMoney[SIZE]={};
    float crdVal1, crdVal2;
    string start, face1, //start, face1=face of dealer card, 
@@ -90,29 +89,29 @@ int main(int argc, char** argv) {
         
     cout<<endl;
     for (int c=0; c<SIZE; c++) {
-   cardVal[c] =rand()%13+2;  //randomly generate card 2
+   cardVal[c] =rand()%13+2;  //randomly generate number to fill cardval array
     }
     
- //2D array   
+ //2D array filled with randome numbers used for other players  
     for (int i=0; i<SIZE; i++){
         for(int j=0; j<nPlyrs; j++){
-            plyrScr[i][j]= rand()%1000+1; //generate scores
+            plyrScr[i][j]= rand()%1000+1; //generate scores for players
         }
     }  
       
     //player X score board
     for (unsigned int i=0; i<myVect.size(); i++){
-        myVect[i]= rand()%10000+50;
+        myVect[i]= rand()%10000+50;  //generate score for player X
     }
     
-    bubble(myVect,SIZE);
+    bubble(myVect,SIZE); //bubble sort
 
     
-    crdVal1= cardVal[0];
-    crdVal2= cardVal[30];
+    crdVal1= cardVal[0]; //pick number 0 from array for dealer card
+    crdVal2= cardVal[30]; //pick number 30 of array for player card 
     
 //Generates card 1 *************************************************************
-face1 = FacVal1(crdVal1);
+face1 = FacVal1(crdVal1);  //function generates face value based on card value
    
 //******************************************************************************
    //High or Low?
@@ -126,20 +125,20 @@ face1 = FacVal1(crdVal1);
             a++;   //increase count
             
     for (int i=0;i<SIZE;i++){
-        nGame[i]=(i+1); //games count
+        nGame[i]=(i+1); //games count array
     }        
             
 games>10?cout<<"You've played over ten games!!"<<endl:cout<< 
         "Reach over 50 games and get $1,000,000!"<<endl;  //Reach over ten games  
+// encouraging message
 
    cout<<"Dealers card: "<<face1<<" with the value of "<<crdVal1<<endl;
-   cout<<setprecision(100000);  //set precision
-        
+   cout<<setprecision(1)<<fixed;  //set precision for decimal if it occurs        
         
   inFile>>PlrAmt;
   cout<<"Pot= $"<<pot<<endl; //display pot value
   cout<<endl;
-  cout<<"Player's earnings =$"<<static_cast<float>(PlrAmt)<<endl;  
+  cout<<"Player's earnings =$"<<static_cast<float>(PlrAmt)<<endl;//static cast
   cout<<endl;  //display player earnings as float
   cout<<"Guess if the next card is higher or lower than the Dealers.\n";
   cout<<"(type in 'h' for high or 'l' for low)"<<endl;
@@ -152,7 +151,7 @@ games>10?cout<<"You've played over ten games!!"<<endl:cout<<
    
 //******************************************************************************  
   cout<<endl;
-  if (HorL=='h') {
+  if (HorL=='h') { //if entered 'h' for higher
       
 cout<<"*********************************************************************\n";
         cout<<"Dealer Draw: "<<face1<<" with the value of "<<crdVal1<<endl;
@@ -160,8 +159,8 @@ cout<<"*********************************************************************\n";
         cout<<endl;        
 cout<<"*********************************************************************\n"; 
       if (crdVal1<crdVal2){
-        error= winMenu(PlrAmt,pot); 
-         if (error==true){
+        error= winMenu(PlrAmt,pot); //return bool value
+         if (error==true){ //end program if invalid entry with switch
              cout<<"Invalid entry"<<endl;
              cout<<"Restart and try again."<<endl;
              return 0;
@@ -169,43 +168,42 @@ cout<<"*********************************************************************\n";
       }
       else if (crdVal1>crdVal2){ //lose guess=high, card=low
           cout<<"You lose!"<<endl;
-          PlrAmt=PlrAmt-pot;
-          pot=2;
+          PlrAmt=PlrAmt-pot;//subtract pot amount from player amount
+          pot=2; //reset pot to $2
       }
       else {
           cout<<"You tied! A tie still counts as a win"<<endl;
           error= winMenu(PlrAmt,pot); 
-         if (error==true) {
+         if (error==true) {//end program if invalid entry with switch
              cout<<"Invalid entry"<<endl;
              cout<<"Restart and try again."<<endl;
              return 0;         
         }
     }
 
-  } else if (HorL=='l') {
+  } else if (HorL=='l') { //if enter 'l'
 cout<<"*********************************************************************\n";
         cout<<"Dealer Draw: "<<face1<<" with the value of "<<crdVal1<<endl;
         cout<<"Your Draw: "<<face2<<" with the value of "<<crdVal2<<endl;
-        cout<<endl;
+        cout<<endl; //display the face of your card and dealers
 cout<<"*********************************************************************\n";
       if (crdVal1>crdVal2){ 
          error= winMenu(PlrAmt,pot); 
-         if (error==true) {
+         if (error==true) {//end program if invalid entry with switch
              cout<<"Invalid entry"<<endl;
              cout<<"Restart and try again."<<endl;
              return 0;
       }
       }
       else if (crdVal1<crdVal2){ //lose if guess low, card high
-          cout<<"You lose."<<endl;
-          PlrAmt=PlrAmt-pot;
-          pot=2;
+          cout<<"You lose."<<endl; 
+          PlrAmt=PlrAmt-pot; //subtract pot amount from player amount
+          pot=2; //reset pot to $2
       }
       else {
           cout<<"You tied! A tie still counts as a win"<<endl;
-          error= winMenu(PlrAmt,pot); 
-          
-         if (error==true){
+          error= winMenu(PlrAmt,pot);           
+         if (error==true){ //end program if invalid entry with switch
              cout<<"Invalid entry"<<endl;
              cout<<"Restart and try again."<<endl;
              return 0;
@@ -213,10 +211,10 @@ cout<<"*********************************************************************\n";
     }
   } else {
     safe=true;
-    while(safe) {
-    cout<<"Invalid entry."<<endl;
+    while(safe) { //safe bool
+    cout<<"Invalid entry."<<endl; 
     cout<<"Enter either h or l"<<endl;
-    games--;
+    games--;//display the error message and revers game counter
     safe=false;
     }
   }
@@ -224,27 +222,27 @@ cout<<"*********************************************************************\n";
   
   
   
-  if (PlrAmt < 0){
-   cout<<"Your out of money!!"<<endl;
-   cout<<"GAME OVER"<<endl; 
-    Stats(nGame,nMoney,SIZE); 
-    Stats(SIZE,Plyrs,nPlyrs,plyrScr, myVect);
+  if (PlrAmt < 0){ //if player amount is below 0
+   cout<<"Your out of money!!"<<endl; 
+   cout<<"GAME OVER"<<endl; //display game over
+    Stats(nGame,nMoney,SIZE); //recap 50 games
+    Stats(SIZE,Plyrs,nPlyrs,plyrScr, myVect); //other players scores
     cout<<"You can search for your player amount at any game by typing in the "
             "game number here."<<endl;
     cout<<"Enter in the specific game number you wish to see data for."<<endl;
     cin>>val;
-    linSrch(myVect,SIZE,val,nGame,nMoney);    
-   return 0;
+    linSrch(myVect,SIZE,val,nGame,nMoney); //search playerX val and player val
+   return 0; //terminate program
 }
 
-}while(games < 50); 
+}while(games < 50); //when player gets to over 50 games
 
   //game over if player amount get to zero
-if (games >50 ) PlrAmt+=1000000;
+if (games >50 ) PlrAmt+=1000000; //add 1000000 to earnings
 cout<<"Would you like to see your stats?"
         "('y' for yes, 'n' for no)"<<endl;
-cin>>choice2;
-if (choice2=='y'){
+cin>>choice2; //watch the stats if they choose
+if (choice2=='y'){ 
     Stats(nGame,nMoney,SIZE); 
     Stats(SIZE,Plyrs,nPlyrs,plyrScr, myVect);
     cout<<"You can search for your player amount at any game by typing in the "
@@ -253,9 +251,9 @@ if (choice2=='y'){
     cin>>val;    
  linSrch(myVect,SIZE,val,nGame,nMoney);
 }         
-else{
-   inFile.close();
-   outFile.close(); 
+else{ //close files
+   inFile.close();  //close infile
+   outFile.close(); //close outfile
   return 0;
 }
 }
@@ -318,7 +316,7 @@ string FacVal1(unsigned short crdVal1 ){
 //******************************************************************************
 //******************************************************************************
 string FacVal2(unsigned short crdVal2 ){
-    string face2;
+    string face2; //assign face value to card value
     if (crdVal2>9){
        switch(crdVal2) {
            case 14: {  //9= ace, value=14
@@ -386,26 +384,26 @@ float winMenu(float &PlrAmt,float &pot){
         
         switch (choice) {
            
-            case 1: {
+            case 1: {  //square pot
                 pot+= pow(pot,2);
                 cout<<"The pot is now =$"<<pot<<endl;               
             }
             break;
-            case 2: {
+            case 2: { //add pot to player amount
                 PlrAmt+=pot;
                 cout<<"Your earnings are =$"<<PlrAmt<<endl;
                 pot=2;  
                 return 0;
             }
             break;
-            case 3: {
+            case 3: { //output player amount to file
                 cout<<"A check has been put in the check file in this programs";
                         cout<<" folder"<<endl;
                 outFile<<PlrAmt<<endl;
                 return 0;
             }
             default:
-                pot+= pow(pot,2);
+                pot+= pow(pot,2); //default double up
                 cout<<"The pot is now =$"<<pot<<endl;  
                 break;                
             }
@@ -413,7 +411,7 @@ float winMenu(float &PlrAmt,float &pot){
 
 //******************************************************************************
 //******************************************************************************
- void Stats(float nGame[], float nMoney[], int SIZE){     
+ void Stats(float nGame[], float nMoney[], int SIZE){ //use money per game    
      cout<<"Your amount per game:"<<endl;
         for (int j=0; j< SIZE; j++){
         cout<<"Game "<<nGame[j]<<":     $"<<nMoney[j]<<endl; //parallel array
@@ -424,7 +422,7 @@ float winMenu(float &PlrAmt,float &pot){
  //*****************************************************************************
  
 void  Stats(int SIZE, string Plyrs[],int nPlyrs,float plyrScr[][5], 
-        vector<unsigned int> myVect){ 
+        vector<unsigned int> myVect){  //player X and other players high scores
     
     cout<<"Player X"<<endl;
     for(int i=0;i<myVect.size();i++){
@@ -443,7 +441,7 @@ void  Stats(int SIZE, string Plyrs[],int nPlyrs,float plyrScr[][5],
 //******************************************************************************
 //******************************************************************************
 void bubble(vector <unsigned int> &myVect,int SIZE){
-     bool swap;
+     bool swap;  //bubble swap, to make least to greatest
     int temp;
     do{
         swap=false;
@@ -460,9 +458,13 @@ void bubble(vector <unsigned int> &myVect,int SIZE){
 //******************************************************************************
 //******************************************************************************
 int linSrch(vector<unsigned int> myVect,int SIZE,int val, float nGame[],
-        float nMoney[])
+        float nMoney[]) //search for value corresponding to game number
         {        
             for(int i= 0; i<(SIZE); i++){
+        if (nGame[i]==val){
+            cout<<"Game "<<(i+1)<<":   $"<<myVect[i]<<endl;  
+        }
+                
         if(nGame[i]==val){
             cout<<"Game "<<(i+1)<<":   $"<<nMoney[i]<<endl;  
     }
